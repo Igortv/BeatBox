@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.bignerdbrunch.android.beatbox.BeatBoxViewModel"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/playback_speed_textview"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="@{@string/playback_speed(viewModel.mPlaybackSpeedValue)}"
+            tools:text="Playback Speed: 35%"/>
+
+
+        <SeekBar
+            android:id="@+id/seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:progress="0"
+            android:max="100"
+            android:onProgressChanged="@{viewModel.onPlaybackSpeedChanged}"/>
+
+    </LinearLayout>
+</layout>
